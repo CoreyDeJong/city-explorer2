@@ -36,12 +36,12 @@ Actual time needed to complete: 37min
 Number and name of feature: lab 6.2 - Locations
 Estimate of time needed to complete: 30 min
 Start time: 10:40 am
-Finish time: 
-Actual time needed to complete: 
+Finish time: 11:45
+Actual time needed to complete: 65 min
 
 Number and name of feature: lab 6.3 Weather
 Estimate of time needed to complete: 60 min
-Start time: 10 am
+Start time: 11:45 am
 Finish time: 
 Actual time needed to complete: 
 
