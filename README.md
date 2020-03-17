@@ -30,12 +30,12 @@ I will be using the darksky and geo information
 Number and name of feature: lab 6.1 - Repo setup
 Estimate of time needed to complete: 30 min
 Start time: 10 am
-Finish time: 
-Actual time needed to complete: 
+Finish time: 10:37 am
+Actual time needed to complete: 37min
 
 Number and name of feature: lab 6.2 - Locations
 Estimate of time needed to complete: 30 min
-Start time: 10 am
+Start time: 10:40 am
 Finish time: 
 Actual time needed to complete: 
 
