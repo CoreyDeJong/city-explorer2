@@ -12,8 +12,9 @@ const PORT = process.env.PORT || 3001;
 
 
 app.get('/location', (request, response) => {
+  try{
     let city = request.query.city;
-  console.log('city Info', city)
+//   console.log('city Info', request)
   let geo = require('./data/geo.json');
   
   let location = new Location(geo[0],city)
@@ -26,6 +27,10 @@ app.get('/location', (request, response) => {
       // }
       
       response.send(location);
+  }
+  catch(err){
+      response.status(500).send(err)
+  }
     });
     
     //bringing in the obj from the api/data files and the city from the user
@@ -79,16 +84,6 @@ this.forecast = obj.summary;
 
 
 
-
-
-
-
-
-
-
-
-
-
-// app.get('*', (request, response) => response.send('Sorry, that route does not exist.'));
+app.get('*', (request, response) => response.send('Sorry, that route does not exist.'));
 
 app.listen(PORT,() => console.log(`Listening on port ${PORT}`));

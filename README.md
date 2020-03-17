@@ -42,11 +42,11 @@ Actual time needed to complete: 65 min
 Number and name of feature: lab 6.3 Weather
 Estimate of time needed to complete: 60 min
 Start time: 11:45 am
-Finish time: 
-Actual time needed to complete: 
+Finish time: 1:30 pm
+Actual time needed to complete: 1.75 hours
 
 Number and name of feature: lab 6.4 Errors
-Estimate of time needed to complete: 30 min
-Start time: 10 am
-Finish time: 
-Actual time needed to complete: 
+Estimate of time needed to complete: 10 min
+Start time: 4 pm
+Finish time: 4:10 pm
+Actual time needed to complete: 10min 
