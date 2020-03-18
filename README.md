@@ -50,3 +50,9 @@ Estimate of time needed to complete: 10 min
 Start time: 4 pm
 Finish time: 4:10 pm
 Actual time needed to complete: 10min 
+
+Number and name of feature: lab 7.1 .Map
+Estimate of time needed to complete: 30 min
+Start time: 10 am
+Finish time: 10:40 am
+Actual time needed to complete: 40min 
