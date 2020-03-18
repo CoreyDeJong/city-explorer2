@@ -13,8 +13,6 @@ let superagent = require('superagent');
 
 
 
-
-
 app.get('/location', (request, response) => {
   
         let city = request.query.city;
@@ -30,6 +28,7 @@ app.get('/location', (request, response) => {
                 // console.log('this is my destination!!!!', destination);
                 response.send(destination);
                 
+                //500 error is the server has an issue
         }).catch(err => response.status(500).send(err))    
 })
 
@@ -61,6 +60,7 @@ app.get('/weather', (request, response) => {
         
         let weatherMap = weatherArray.map(day => new Weather (day));
 
+        //200 is good
         response.status(200).send(weatherMap);
     })
 
@@ -98,7 +98,14 @@ this.forecast = obj.summary;
 //   ]
 
 
+////Trails
 
-app.get('*', (request, response) => response.send('Sorry, chuck norris says that route does not exist.'));
+
+
+
+
+
+//404 error is no page is found
+app.get('*', (request, response) => response.status(404).send('Sorry, chuck norris says that route does not exist.'));
 
 app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
