@@ -9,39 +9,37 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
+let superagent = require('superagent');
+
+
+
 
 
 app.get('/location', (request, response) => {
-  try{
-    let city = request.query.city;
-//   console.log('city Info', request)
-  let url = require('https://us1.locationiq.com/v1/search.php?key=${process.env.GEO_API_KEY}=${city}&format=json');
-//   let geo = require('./data/geo.json');
-  let location = new Location(url, city)
   
-  // let dataObj = {
-      //     search_query: city,
-      //     formatted_query: geo[0].display_name,
-      //     latitude: geo[0].lat,
-      //     longitude: geo[0].lon
-      // }
-      
-      response.send(location);
-  }
-  catch(err){
-      response.status(500).send(err)
-  }
-    });
-    
-    //bringing in the obj from the api/data files and the city from the user
-    function Location (obj, city){
-        this.search_query = city;
-        this.formatted_query = obj.display_name;
-        this.latitude = obj.lat;
-        this.longitude = obj.lon;
-    }
-    
-    
+        let city = request.query.city;
+        //   console.log('city Info', request)
+        let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.GEO_API_KEY}&q=${city}&format=json&limit=1`;
+        console.log(url)
+        //   let geo = require('./data/geo.json');
+        // let location = new Location(url, city)
+        
+        superagent.get(url).then(superagentResults => {
+            console.log(superagentResults.body[0])
+                let destination = new Location(superagentResults.body[0], city);
+                console.log('this is my destination!!!!', destination);
+                response.send(destination);
+                
+        }).catch(err => response.status(500).send(err))    
+})
+
+//bringing in the obj from the api/data files and the city from the user
+function Location (obj, city){
+    this.search_query = city;
+    this.formatted_query = obj.display_name;
+    this.latitude = obj.lat;
+    this.longitude = obj.lon;
+}
     //response needed to send to front-end
     // {
     //     "search_query": "seattle",
