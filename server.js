@@ -20,14 +20,14 @@ app.get('/location', (request, response) => {
         let city = request.query.city;
         //   console.log('city Info', request)
         let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.GEO_API_KEY}&q=${city}&format=json&limit=1`;
-        console.log(url)
+        // console.log(url)
         //   let geo = require('./data/geo.json');
         // let location = new Location(url, city)
         
         superagent.get(url).then(superagentResults => {
-            console.log(superagentResults.body[0])
+            // console.log(superagentResults.body[0])
                 let destination = new Location(superagentResults.body[0], city);
-                console.log('this is my destination!!!!', destination);
+                // console.log('this is my destination!!!!', destination);
                 response.send(destination);
                 
         }).catch(err => response.status(500).send(err))    
@@ -48,22 +48,33 @@ function Location (obj, city){
     //     "longitude": "-122.332071"
     //   }
 
-
-
 //code helped with Alex P.
 app.get('/weather', (request, response) => {
+    let locationObject = request.query;
+    console.log('corey locationObject', locationObject);
+    let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${locationObject.latitude},${locationObject.longitude}`;
+    console.log('corey latitude', url)
+    
+    
+    superagent.get(url).then(results => {
+        let weatherArray = results.body.daily.data;
+        
+        let weatherMap = weatherArray.map(day => new Weather (day));
 
-    let banana = require('./data/darksky.json');
-    const forecastArr = banana.daily.data.map(day => {
-        return new Weather(day);
-    });
+        response.status(200).send(weatherMap);
+    })
+
+
+    // const forecastArr = url.daily.data.map(day => {
+    //     return new Weather(day);
+    // });
 
 
        // day.daily.data.forEach(forecast => {
     //     weather.push(new Weather(forecast));
     // });
-    response.status(200).json(forecastArr);
-    console.log('Weather corey', response)
+    // response.status(200).json(forecastArr);
+    // console.log('Weather corey', response)
 });
 
 
@@ -88,6 +99,6 @@ this.forecast = obj.summary;
 
 
 
-app.get('*', (request, response) => response.send('Sorry, that route does not exist.'));
+app.get('*', (request, response) => response.send('Sorry, chuck norris says that route does not exist.'));
 
 app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
