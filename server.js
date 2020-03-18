@@ -15,9 +15,9 @@ app.get('/location', (request, response) => {
   try{
     let city = request.query.city;
 //   console.log('city Info', request)
-  let geo = require('./data/geo.json');
-  
-  let location = new Location(geo[0],city)
+  let url = require('https://us1.locationiq.com/v1/search.php?key=${process.env.GEO_API_KEY}=${city}&format=json');
+//   let geo = require('./data/geo.json');
+  let location = new Location(url, city)
   
   // let dataObj = {
       //     search_query: city,
@@ -54,12 +54,18 @@ app.get('/location', (request, response) => {
 
 //code helped with Alex P.
 app.get('/weather', (request, response) => {
-    let weather = [];
-    let day = require('./data/darksky.json');
-    day.daily.data.forEach(forecast => {
-        weather.push(new Weather(forecast));
+
+    let banana = require('./data/darksky.json');
+    const forecastArr = banana.daily.data.map(day => {
+        return new Weather(day);
     });
-    response.status(200).json(weather);
+
+
+       // day.daily.data.forEach(forecast => {
+    //     weather.push(new Weather(forecast));
+    // });
+    response.status(200).json(forecastArr);
+    console.log('Weather corey', response)
 });
 
 
