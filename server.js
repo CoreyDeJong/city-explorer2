@@ -11,6 +11,9 @@ const PORT = process.env.PORT || 3001;
 
 let superagent = require('superagent');
 
+//pg is the library that connects the server to the database
+const pg = require('pg');
+
 
 
 app.get('/location', (request, response) => {

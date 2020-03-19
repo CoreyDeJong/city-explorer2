@@ -74,3 +74,30 @@ Estimate of time needed to complete: 45 min
 Start time: 8:30pm
 Finish time: 9:10pm
 Actual time needed to complete:  40min
+
+Number and name of feature: lab 8.1 Database
+Estimate of time needed to complete: 60 min
+Start time: 9:30 am
+Finish time: 10:37am
+Actual time needed to complete: 67min min 
+
+Number and name of feature: lab 8.2 Server
+Estimate of time needed to complete: 60 min
+Start time:  am
+Finish time: am
+Actual time needed to complete: min 
+
+Number and name of feature: lab 8.3 Deploy
+Estimate of time needed to complete: 60 min
+Start time:  am
+Finish time: am
+Actual time needed to complete: min 
+
+Number and name of feature: lab 8.4 Stretch 
+Estimate of time needed to complete: 60 min
+Start time:  am
+Finish time: am
+Actual time needed to complete: min 
+
+
+
