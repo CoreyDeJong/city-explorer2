@@ -11,7 +11,36 @@ const PORT = process.env.PORT || 3001;
 
 let superagent = require('superagent');
 
+//pg is the library that connects the server to the database
+const pg = require('pg');
 
+
+// server set-up
+// database is a connection object to our postgress instance
+const database = new pg.Client(process.env.DATABASE_URL);
+database.on('error', err => console.error(err));
+
+// only turn on the server if you first connect to the database
+database.connect()
+    .then(() => {
+        app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
+    });
+
+app.get('/location', (request, response) => {
+
+    let city = request.query.city;
+    
+    // check database if city exists, if exists, pull data from database, if not pull data using superagent from api
+
+    // superagent to get data
+
+    let sql = 'INSERT INTO city_explorer_table (city_name) VALUES ($1);';
+    let safeValues = [city];
+    
+
+    //put into database
+    database.query(sql, safeValues)
+});
 
 app.get('/location', (request, response) => {
   
@@ -103,4 +132,3 @@ function Hiking(obj){
 //404 error is no page is found
 app.get('*', (request, response) => response.status(404).send('Sorry, chuck norris says that route does not exist.'));
 
-app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
