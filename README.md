@@ -66,11 +66,11 @@ Actual time needed to complete: 90min
 Number and name of feature: lab 7.3 weather API
 Estimate of time needed to complete: 45 min
 Start time: 12:45 pm
-Finish time: 
-Actual time needed to complete:  
+Finish time: 1:30pm
+Actual time needed to complete:  45 min
 
 Number and name of feature: lab 7.4 Trails API
 Estimate of time needed to complete: 45 min
-Start time: 
-Finish time: 
-Actual time needed to complete:  
+Start time: 8:30pm
+Finish time: 9:10pm
+Actual time needed to complete:  40min
