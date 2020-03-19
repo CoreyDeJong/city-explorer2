@@ -54,27 +54,13 @@ app.get('/weather', (request, response) => {
     let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${locationObject.latitude},${locationObject.longitude}`;
     console.log('corey latitude', url)
     
-    
-    superagent.get(url).then(results => {
+        superagent.get(url).then(results => {
         let weatherArray = results.body.daily.data;
-        
         let weatherMap = weatherArray.map(day => new Weather (day));
-
         //200 is good
         response.status(200).send(weatherMap);
     })
 
-
-    // const forecastArr = url.daily.data.map(day => {
-    //     return new Weather(day);
-    // });
-
-
-       // day.daily.data.forEach(forecast => {
-    //     weather.push(new Weather(forecast));
-    // });
-    // response.status(200).json(forecastArr);
-    // console.log('Weather corey', response)
 });
 
 
@@ -83,26 +69,35 @@ this.time = new Date(obj.time*1000).toDateString();
 this.forecast = obj.summary;
 }
 
-  
-//weather response
-// [
-//     {
-//       "forecast": "Partly cloudy until afternoon.",
-//       "time": "Mon Jan 01 2001"
-//     },
-//     {
-//       "forecast": "Mostly cloudy in the morning.",
-//       "time": "Tue Jan 02 2001"
-//     },
-//     ...
-//   ]
 
 
-////Trails
+app.get('/trails', (request, response)=> {
+    let trailObject = request.query;
+    console.log('coreys trail object', trailObject)
+    let url = `https://www.hikingproject.com/data/get-trails?lat=${trailObject.latitude}&lon=${trailObject.longitude}&maxDistance=10&key=${process.env.TRAIL_API_KEY}`;
+    console.log('coreys trail api is....', url);
 
 
+    superagent.get(url).then(results => {
+        let hikingArray = results.body.trails;
+        console.log('coreys hikingArray is ...', hikingArray);
+        let hikingResponse = hikingArray.map(trail => new Hiking (trail));
+        response.status(200).send(hikingResponse);
+    })
+});
 
-
+function Hiking(obj){
+    this.name = obj.name;
+    this.location = obj.location;
+    this.length = obj.length;
+    this.stars = obj.stars;
+    this.star_votes = obj.starVotes;
+    this.summary = obj.summary;
+    this.trail_url = obj.url;
+    this.conditions = obj.conditionStatus;
+    this.condition_date = obj.conditionDate.slice(0,10);
+    this.condition_time = obj.conditionDate.slice(11,19);
+  };
 
 
 //404 error is no page is found
