@@ -13,7 +13,6 @@ const superagent = require('superagent');
 
 //libraries
 const handleWeather = require('./library/weather.js')
-
 app.get('/weather', handleWeather);
 
 
@@ -35,7 +34,7 @@ database.connect()
 app.get('/location', (request, response) => {
     
     let city = request.query.city;
-    //   console.log('city Info', city)
+      console.log('city Info', city)
         
     let sql = 'SELECT * FROM city_explorer_table WHERE search_query=$1;';
     let safeValues = [city];
@@ -51,7 +50,7 @@ app.get('/location', (request, response) => {
         
                 // superagent to get data
                     superagent.get(url).then(superagentResults => {
-                        // console.log(superagentResults.body[0])
+                        console.log(superagentResults.body[0])
                             let destination = new Location(superagentResults.body[0], city);
                             // console.log('this is my destination!!!!', destination);
                             response.status(200).send(destination);
@@ -87,7 +86,7 @@ function Location (obj, city){
 
 app.get('/trails', (request, response)=> {
     let trailObject = request.query;
-    // console.log('coreys trail object', trailObject)
+    console.log('coreys trail object', trailObject)
     let url = `https://www.hikingproject.com/data/get-trails?lat=${trailObject.latitude}&lon=${trailObject.longitude}&maxDistance=10&key=${process.env.TRAIL_API_KEY}`;
     // console.log('coreys trail api is....', url);
 
@@ -118,8 +117,8 @@ function Hiking(obj){
 
 
 app.get('/movies', (request, response) => {
-    let movieRequest = request.query;
-    console.log(movieRequest)
+    let movieRequest = request.query.search_query;
+    console.log('coreys movieRequest', movieRequest);
 })
 
 
