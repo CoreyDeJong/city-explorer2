@@ -114,6 +114,27 @@ function Hiking(obj){
   };
 
 
+
+
+
+app.get('/movies', (request, response) => {
+    let movieRequest = request.query;
+    console.log(movieRequest)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //404 error is no page is found
 app.get('*', (request, response) => response.status(404).send('Sorry, chuck norris says that route does not exist.'));
 
