@@ -34,7 +34,7 @@ database.connect()
 app.get('/location', (request, response) => {
     
     let city = request.query.city;
-      console.log('city Info', city)
+    //   console.log('city Info', city)
         
     let sql = 'SELECT * FROM city_explorer_table WHERE search_query=$1;';
     let safeValues = [city];
@@ -56,7 +56,7 @@ app.get('/location', (request, response) => {
                             response.status(200).send(destination);
                             
                             //500 error is the server has an issue
-                            let sql = 'INSERT INTO city_explorer_table (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4);';
+                            let sql = 'INSERT INTO city_explorer_table (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) returning id;';
                             let safeValues = [city, destination.formatted_query, destination.latitude, destination.longitude];
                             //put into database
                             database.query(sql, safeValues)
@@ -86,7 +86,7 @@ function Location (obj, city){
 
 app.get('/trails', (request, response)=> {
     let trailObject = request.query;
-    console.log('coreys trail object', trailObject)
+    // console.log('coreys trail object', trailObject)
     let url = `https://www.hikingproject.com/data/get-trails?lat=${trailObject.latitude}&lon=${trailObject.longitude}&maxDistance=10&key=${process.env.TRAIL_API_KEY}`;
     // console.log('coreys trail api is....', url);
 
