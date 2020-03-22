@@ -83,21 +83,35 @@ Actual time needed to complete: 67min min
 
 Number and name of feature: lab 8.2 Server
 Estimate of time needed to complete: 60 min
-Start time:  am
-Finish time: am
-Actual time needed to complete: min 
+Start time: 10:45 am
+Finish time: 11:45 am
+Actual time needed to complete: 60 min 
 
 Number and name of feature: lab 8.3 Deploy
 Estimate of time needed to complete: 60 min
-Start time:  am
-Finish time: am
-Actual time needed to complete: min 
+Start time: 12 am
+Finish time: 1:30 pm
+Actual time needed to complete: 90 min 
 
-Number and name of feature: lab 8.4 Stretch 
+Number and name of feature: lab 9.1 Movies
 Estimate of time needed to complete: 60 min
-Start time:  am
-Finish time: am
-Actual time needed to complete: min 
+Start time: 1pm
+Finish time:1:45pm
+Actual time needed to complete: 45 min 
+
+Number and name of feature: lab 9.2 Yelp
+Estimate of time needed to complete: 60 min
+Start time:  1:45pm 
+Finish time: 2:30pm
+Actual time needed to complete:45 min 
+
+Number and name of feature: lab 9.3 Refractor
+Estimate of time needed to complete: 60 min
+Start time: 2:30pm
+Finish time: 3:15pm
+Actual time needed to complete:45 min 
+
+
 
 
 
