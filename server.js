@@ -34,20 +34,21 @@ database.connect()
 app.get('/location', (request, response) => {
     
     let city = request.query.city;
-    //   console.log('city Info', city)
+      console.log('city Info', city)
         
     let sql = 'SELECT * FROM city_explorer_table WHERE search_query=$1;';
     let safeValues = [city];
     database.query(sql, safeValues)
         .then(results => {
         //this will get the rows of cities that are in the database
-        // console.log(results.rows);
+        // console.log(results);
         if(results.rows.length > 0){
             //send the response of the first index of the row, which is just the city name.
+            console.log('database test')
             response.send(results.rows[0])
         } else {
                 let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.GEO_API_KEY}&q=${city}&format=json&limit=1`;
-        
+                console.log('testing else stmt', url)
                 // superagent to get data
                     superagent.get(url).then(superagentResults => {
                         console.log(superagentResults.body[0])
